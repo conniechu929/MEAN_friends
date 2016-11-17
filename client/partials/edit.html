@@ -1,0 +1,19 @@
+<a href="#/">Show All Friends</a>
+<h2>Edit Info</h2>
+<form name='editForm' ng-submit='editFriend()' method='put'>
+  First Name: <input type="text" name='first_name' placeholder={{friend.first_name}} ng-model='editfriend.first_name' ng-minlength='2' required>
+  Last Name: <input type="text" name='last_name' placeholder={{friend.last_name}} ng-model='editfriend.last_name'  ng-minlength='2' required>
+  Birthday: <input type="date" name='birthday' ng-model='editfriend.birthday' required>
+  <button>Update</button>
+</form>
+<div ng-messages="editForm.first_name.$error">
+  <p ng-message='minlength'>First name is too short.</p>
+  <p ng-message='required'>First name is required.</p>
+</div>
+<div ng-messages="editForm.last_name.$error">
+  <p ng-message='minlength'>Last name is too short.</p>
+  <p ng-message='required'>Last name is required.</p>
+</div>
+<div ng-messages="editForm.birthday.$error">
+  <p ng-message='required'>Birthday is required.</p>
+</div>

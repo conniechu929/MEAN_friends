@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>All Friends</title>
+  </head>
+  <body>
+    <div ng-controller="newController">
+      <h1>All Friends</h1>
+      Search friends: <input type="text" ng-model='filter_name'>
+      Search by birthdate: <input type="date" ng-model='filter_date'> <a href="#/a">Reset</a><br>
+
+      <br><table>
+        <tr>
+          <th style='padding-left: 20px; padding-right: 20px'>Name</th>
+          <th style='padding-left: 20px; padding-right: 20px'>Birth Date</th>
+          <th style='padding-left: 20px; padding-right: 20px'>Show</th>
+          <th style='padding-left: 20px; padding-right: 20px'>Update</th>
+          <th style='padding-left: 20px; padding-right: 20px'>Delete</th>
+        </tr>
+        <tbody>
+          <tr ng-repeat = "friend in friends | orderBy:'first_name' | filter: {first_name: filter_name, last_name: filter_name, birthday: searchDate(filter_date)}">
+            <td style='padding-left: 20px; padding-right: 20px'>{{friend.first_name}} {{friend.last_name}}</td>
+            <td style='padding-left: 20px; padding-right: 20px'>{{friend.birthday | date: 'MM/dd/yyyy'}}</td>
+            <td style='padding-left: 20px; padding-right: 20px'><a href="#/show/{{friend._id}}">Show</a></td>
+            <td style='padding-left: 20px; padding-right: 20px'><a href="#/edit/{{friend._id}}">Edit</a></td>
+            <td style='padding-left: 20px; padding-right: 20px'><a href="#/delete/{{friend._id}}">Delete</a></td>
+          </tr>
+        </tbody>
+      </table>
+      <br>
+      <a href="#/new">Add New Friend</a>
+    </div>
+  </body>
+</html>
